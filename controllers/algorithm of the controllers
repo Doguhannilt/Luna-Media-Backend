@@ -1,0 +1,55 @@
+1-) signupUser
+
+a. Take {name, email, username, password} from the user with the help of body-parser
+b. Search whether email or username are available or not
+c. If some of them is not available, then return status 400
+d. Make password more complex with bcrypt
+e. Create a new user and put the whole parameters in it
+f. Generate a new *Token* for new user
+
+
+2-) loginUser
+
+a. Take {username, password} from the user
+b. Check username is exist in the dataset
+c. If it's not, return status 500
+d. If it's, check there is any username related to given username
+e. If it's, check the given password is true when you compared to password in the database
+f. Generate a new *Token* for the user
+g. Return status 200
+
+3-) logoutUser
+
+a. Reset the cookie (which is jwt)
+b. Status 200 and return "User Logged out"
+
+4-) getUserProfile
+
+a. Take the dynamic username which is example/:username
+b. Find the username if it is exist by using findOne()
+c. if it's not, return status 400
+d. otherwise return status 200
+
+
+5-) getPosts
+
+a. Take the dynamic id which is example/:id and use findById method
+b. if it's not exist, return status 400
+c. otherwise return 200 and itself
+
+6-) createPost
+
+a. Take the necessary parameters from the user
+b. if postedBy and text is not available, return status 400
+c. find the postedBy by using Id
+d. if user is not exist, return status 404
+e. if the user wants to share a post but not for his account, block it
+f. if the given text is more than maxLength, return status 400
+g. Create a newPost and put the whole parameters in it
+
+7-) deletePost
+
+a. Take the dynamic id which is example:id and use findById method
+b. if post is not exist, return state 400
+c. if unauthorized process, return state 401
+d. find the post with Id and delete by using findByIdAndDelete() method

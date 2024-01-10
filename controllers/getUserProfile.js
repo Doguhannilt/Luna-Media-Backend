@@ -7,7 +7,7 @@ const getUserProfile = async (req,res) => {
     const {username} = req.params
     const user = await User.findOne({username}).select("-password").select("-updatedAt")
     if(!user) return res.status(400)
-    res.status(200)
+    res.status(200).json({message: "User is found"})
     try {
         
     } catch (error) {

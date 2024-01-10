@@ -8,7 +8,7 @@ const loginUser = async (req, res) => {
             username, 
             password } = req.body;
 
-        // Kullanıcıyı bul
+
         let user;
         try {
             user = await User.findOne({ username });
@@ -17,22 +17,22 @@ const loginUser = async (req, res) => {
             return res.status(500).json({ message: "Internal" });
         }
 
-        // Kullanıcı kontrolü
+   
         if (!user) {
             return res.status(400).json({ message: "There is no such a user" });
         }
 
-        // Şifre kontrolü
+
         const isPaswCorr = await bcrypt.compare(password, user.password);
 
         if (!isPaswCorr) {
             return res.status(400).json({ message: "Password is not correct" });
         }
 
-        // Token oluştur ve çereze ekle
+
         generateTokenandSetcookie(user._id, res);
 
-        // Başarılı cevap
+
         res.status(200).json({
             _id: user._id,
             name: user.username,

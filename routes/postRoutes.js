@@ -3,8 +3,8 @@ import { createPost } from '../controllers/createPost.js';
 import protectRoute from '../middlewares/protectRoute.js'
 import { getPosts } from '../controllers/getPosts.js';
 import { deletePost } from '../controllers/deletePost.js';
-import { likeorNot } from '../controllers/likeOrnot.js';
-import { reply } from '../controllers/reply.js';
+import { likeorNot } from '../controllers/likePost.js';
+import { reply } from '../controllers/replyPost.js';
 import { feed } from '../controllers/feed.js';
 
 const router = express.Router()
