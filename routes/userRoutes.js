@@ -1,10 +1,10 @@
 import express from 'express'
-import  { signupUser, loginUser, logoutUser, Followorunfollow, updateUser }  from '../controllers/userController.js';
+import  { signupUser, loginUser, logoutUser, Followorunfollow, updateUser, getUserProfile }  from '../controllers/userController.js';
 import protectRoute from '../middlewares/protectRoute.js';
 
 const router = express.Router()
 
-
+router.post("/profile/:username", getUserProfile)
 router.post("/signup",signupUser )
 router.post("/login", loginUser)
 router.post("/logout",logoutUser)
